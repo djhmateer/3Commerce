@@ -1,0 +1,15 @@
+﻿@using Ploeh.Samples.Commerce.Domain
+
+<asp:Content ID="indexTitle" ContentPlaceHolderID="TitleContent" runat="server">
+    Home Page
+</asp:Content>
+
+<asp:Content ID="indexContent" ContentPlaceHolderID="MainContent" runat="server">
+    <h2>Featured Products</h2>
+    <div>
+        @foreach (var product in Model.Products) {
+            @product.SummaryText
+            <br />
+        }
+    </div>
+</asp:Content>
