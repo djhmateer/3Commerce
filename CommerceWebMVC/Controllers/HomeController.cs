@@ -7,16 +7,12 @@ namespace CommerceWebMVC.Controllers {
     public class HomeController : Controller {
         private readonly ProductRepository repository;
 
+        // CommerceControllerFactory injects in the SqlProductRepository
         public HomeController(ProductRepository repository) {
             if (repository == null) {
                 throw new ArgumentNullException("repository");
             }
-
             this.repository = repository;
-        }
-
-        // Need a parameterless constructor if have another ctor with a parameter
-        public HomeController() {
         }
 
         public ViewResult Index() {

@@ -16,6 +16,10 @@ namespace CommerceWebMVC
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            var root = new CompositionRoot();
+            // ControllerBuilder is an MVC class
+            ControllerBuilder.Current.SetControllerFactory(root.ControllerFactory);
         }
     }
 }
