@@ -239,10 +239,6 @@
       <Project>{e7de5524-0dbf-4716-8d77-c45458d5b7db}</Project>
       <Name>CommerceDomain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CommerceSqlDataAccess\CommerceSqlDataAccess.csproj">
-      <Project>{db01edab-ec7c-4700-aaea-2fca35ceb80e}</Project>
-      <Name>CommerceSqlDataAccess</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
