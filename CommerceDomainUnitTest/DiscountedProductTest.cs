@@ -1,18 +1,12 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using Ploeh.AutoFixture;
+﻿using Ploeh.AutoFixture;
 using Ploeh.Samples.Commerce.Domain;
+using System;
 using Xunit;
 
-namespace CommerceDomainUnitTest
-{
-    public class DiscountedProductTest
-    {
+namespace CommerceDomainUnitTest {
+    public class DiscountedProductTest {
         [Fact]
-        public void CreateWithNullNameWillThrow()
-        {
+        public void CreateWithNullNameWillThrow() {
             // Fixture setup
             var fixture = new Fixture();
             string nullName = null;
@@ -25,8 +19,7 @@ namespace CommerceDomainUnitTest
         }
 
         [Fact]
-        public void NameWillMatchConstructorArgument()
-        {
+        public void NameWillMatchConstructorArgument() {
             // Fixture setup
             var fixture = new Fixture();
             string expectedName = fixture.CreateAnonymous("Name");
@@ -42,8 +35,7 @@ namespace CommerceDomainUnitTest
         }
 
         [Fact]
-        public void UnitPriceWillMatchConstructorArgument()
-        {
+        public void UnitPriceWillMatchConstructorArgument() {
             // Fixture setup
             var fixture = new Fixture();
             var expectedUnitPrice = fixture.CreateAnonymous<decimal>();

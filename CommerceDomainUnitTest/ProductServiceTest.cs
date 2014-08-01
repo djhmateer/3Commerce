@@ -1,21 +1,17 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Moq;
 using Ploeh.AutoFixture;
 using Ploeh.Samples.Commerce.Domain;
-using System.Security.Principal;
-using Moq;
 using Ploeh.SemanticComparison;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Principal;
 using Xunit;
 
-namespace CommerceDomainUnitTest
-{
-    public class ProductServiceTest
-    {
+namespace CommerceDomainUnitTest {
+    public class ProductServiceTest {
         [Fact]
-        public void CreateWithNullRepositoryWillThrow()
-        {
+        public void CreateWithNullRepositoryWillThrow() {
             // Fixture setup
             var fixture = new RepositoryFixture();
             ProductRepository nullRepository = null;
@@ -28,8 +24,7 @@ namespace CommerceDomainUnitTest
         }
 
         [Fact]
-        public void GetFeaturedProductsWithNullPrincipalWillThrow()
-        {
+        public void GetFeaturedProductsWithNullPrincipalWillThrow() {
             // Fixture setup
             var fixture = new RepositoryFixture();
             var sut = fixture.CreateAnonymous<ProductService>();
@@ -41,8 +36,7 @@ namespace CommerceDomainUnitTest
         }
 
         [Fact]
-        public void GetFeaturedProductsWillReturnInstance()
-        {
+        public void GetFeaturedProductsWillReturnInstance() {
             // Fixture setup
             var fixture = new RepositoryFixture();
             var sut = fixture.CreateAnonymous<ProductService>();
@@ -64,8 +58,7 @@ namespace CommerceDomainUnitTest
         /// </para>
         /// </remarks>
         [Fact]
-        public void GetFeaturedProductsWillReturnCorrectProduct()
-        {
+        public void GetFeaturedProductsWillReturnCorrectProduct() {
             // Fixture setup
             var product = new Product();
             product.Name = "Olives";
@@ -76,12 +69,11 @@ namespace CommerceDomainUnitTest
                 .Setup(s => s.GetFeaturedProducts())
                 .Returns(new[] { product });
 
-            var sut =
-                new ProductService(repositoryStub.Object);
+            var sut = new ProductService(repositoryStub.Object);
 
             var userStub = new Mock<IPrincipal>();
             // Exercise system
-            var products = 
+            var products =
                 sut.GetFeaturedProducts(userStub.Object);
             var result = products.Single();
             // Verify outcome
@@ -91,13 +83,11 @@ namespace CommerceDomainUnitTest
         }
 
         [Fact]
-        public void GetFeaturedProductsWillReturnCorrectProductsForNonPreferredUser()
-        {
+        public void GetFeaturedProductsWillReturnCorrectProductsForNonPreferredUser() {
             // Fixture setup
             var fixture = new RepositoryFixture();
             var featuredProducts = fixture.CreateMany<Product>().ToList();
-            fixture.Register(() =>
-                {
+            fixture.Register(() => {
                     var repositoryStub = new Mock<ProductRepository>();
                     repositoryStub.Setup(r => r.GetFeaturedProducts()).Returns(featuredProducts);
                     return repositoryStub.Object;
@@ -115,13 +105,11 @@ namespace CommerceDomainUnitTest
         }
 
         [Fact]
-        public void GetFeaturedProductsWillReturnCorrectProductsForPreferredCustomer()
-        {
+        public void GetFeaturedProductsWillReturnCorrectProductsForPreferredCustomer() {
             // Fixture setup
             var fixture = new RepositoryFixture();
             var featuredProducts = fixture.CreateMany<Product>().ToList();
-            fixture.Register(() =>
-                {
+            fixture.Register(() => {
                     var repositoryStub = new Mock<ProductRepository>();
                     repositoryStub.Setup(r => r.GetFeaturedProducts()).Returns(featuredProducts);
                     return repositoryStub.Object;

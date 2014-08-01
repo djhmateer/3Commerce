@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Security.Principal;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Routing;
-using System.Web.Security;
-using Ploeh.Samples.Commerce.Web.Controllers;
+using CommerceWebMVC.Controllers;
 using Xunit;
 
 namespace Ploeh.Samples.Commerce.WebUnitTest

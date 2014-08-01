@@ -1,20 +1,13 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Moq;
 using Ploeh.AutoFixture;
 using Ploeh.Samples.Commerce.Domain;
-using Moq;
 using System.Security.Principal;
 using Xunit;
 
-namespace CommerceDomainUnitTest
-{
-    public class ProductTest
-    {
+namespace CommerceDomainUnitTest {
+    public class ProductTest {
         [Fact]
-        public void NameIsWellBehavedWritableProperty()
-        {
+        public void NameIsWellBehavedWritableProperty() {
             // Fixture setup
             var fixture = new Fixture();
             var sut = fixture.CreateAnonymous<Product>();
@@ -28,8 +21,7 @@ namespace CommerceDomainUnitTest
         }
 
         [Fact]
-        public void UnitPriceIsWellBehavedWritableProperty()
-        {
+        public void UnitPriceIsWellBehavedWritableProperty() {
             // Fixture setup
             var fixture = new Fixture();
             var sut = fixture.CreateAnonymous<Product>();
@@ -43,8 +35,7 @@ namespace CommerceDomainUnitTest
         }
 
         [Fact]
-        public void ApplyDiscountWillNotApplyDiscountWhenUserIsNotPreferred()
-        {
+        public void ApplyDiscountWillNotApplyDiscountWhenUserIsNotPreferred() {
             // Fixture setup
             var fixture = new Fixture();
 
@@ -61,8 +52,7 @@ namespace CommerceDomainUnitTest
         }
 
         [Fact]
-        public void ApplyDiscountWillApplyDiscountWhenUserIsPreferred()
-        {
+        public void ApplyDiscountWillApplyDiscountWhenUserIsPreferred() {
             // Fixture setup
             var fixture = new Fixture();
 
