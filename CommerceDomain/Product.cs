@@ -3,7 +3,6 @@
 namespace Ploeh.Samples.Commerce.Domain {
     public class Product {
         public string Name { get; set; }
-
         public decimal UnitPrice { get; set; }
 
         public DiscountedProduct ApplyDiscountFor(IPrincipal user) {

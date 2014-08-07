@@ -10,6 +10,7 @@ using Ploeh.Samples.Commerce.Domain;
 using Moq;
 using Ploeh.AutoFixture;
 using System.Security.Principal;
+using Ploeh.Samples.Commerce.Web.Models;
 using Ploeh.SemanticComparison;
 using Xunit;
 
@@ -39,7 +40,7 @@ namespace Ploeh.Samples.Commerce.WebUnitTest
             var fixture = new Fixture().Customize(new CommerceWebCustomization());
             var sut = fixture.CreateAnonymous<HomeController>();
             // Exercise system
-            ViewResult result = sut.About();
+            ViewResult result = (ViewResult)sut.About();
             // Verify outcome
             Assert.NotNull(result);
             // Teardown

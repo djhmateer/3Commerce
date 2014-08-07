@@ -9,13 +9,10 @@ namespace Ploeh.Samples.Commerce.Web.Models {
             this.Name = product.Name;
             this.UnitPrice = product.UnitPrice;
         }
-
         public string Name { get; set; }
-
         public string SummaryText {
             get {
-                return string.Format("{0} ({1:C})",
-                    this.Name, this.UnitPrice);
+                return string.Format("{0} ({1:C})",this.Name, this.UnitPrice);
             }
         }
 
